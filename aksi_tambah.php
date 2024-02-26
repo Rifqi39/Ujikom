@@ -16,7 +16,7 @@
         if(!empty($input)){
             echo '<script>
                 alert("Daftar Berhasil");
-                window.location = "d_buku.php";
+                location.href = "index.php?page=buku";
                 </script>';
         }
         ?>

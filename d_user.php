@@ -205,6 +205,12 @@ if ($login == 1) {
                 Daftar Buku
               </a>
             </li> 
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="ulasan.php">
+                <svg class="bi"><use xlink:href="#list"/></svg>
+                Ulasan
+              </a>
+            </li> 
             <?php
               if($_SESSION ['level'] != 'pengguna'){
             ?>
@@ -262,8 +268,8 @@ if ($login == 1) {
                     <?php
                             if($_SESSION ['level'] == 'admin'){
                             ?>                    
-                    <th><form action="register.php">
-            <input type="submit" value="Tambah Pengguna">
+                    <th><form action="petugasregister.php">
+            <input type="submit" value="Tambah Petugas">
         </form></th>
         <?php
         }

@@ -196,6 +196,12 @@ if ($login == 1) {
                 Daftar Buku
               </a>
             </li> 
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="ulasan.php">
+                <svg class="bi"><use xlink:href="#list"/></svg>
+                Ulasan
+              </a>
+            </li> 
             <?php
               if($_SESSION ['level'] != 'pengguna'){
             ?>
@@ -322,7 +328,7 @@ if ($login == 1) {
                     <td><?php echo $data['penerbit'] ?></td>
                     <td><?php echo $data['tahun_terbit'] ?></td>
                     <td><?php echo $data['stok'] ?></td>
-                    <td><a href="edit.php?bukuID=<?php echo $data['bukuID'];?>" class="btn btn-secondary">Edit</a>
+                    <td><a href="edit.php?bukuID=<?php echo $data['bukuID'];?>" class="btn btn-info">Edit</a>
 <a href="hapus.php?bukuID=<?php echo $data['bukuID'];?>" onClick =  "return confirm ('Yakin Ingin Hapus Buku?')" class="btn btn-danger">Hapus</a></td>
                 </tr>
                 <?php

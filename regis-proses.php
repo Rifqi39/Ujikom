@@ -17,7 +17,7 @@
     if(!empty($input)){
       echo '<script>
             alert("Daftar Berhasil");
-            window.location = "index.php";
+            location.href = "index.php";
             </script>';
     }
     ?>

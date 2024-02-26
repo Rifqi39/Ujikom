@@ -11,7 +11,7 @@
     if(!empty($input)){
         echo '<script>
               alert("Daftar Berhasil");
-              window.location = "d_kategori.php";
+              location.href = "index.php?page=d_kategori";
               </script>';
     }
     ?>

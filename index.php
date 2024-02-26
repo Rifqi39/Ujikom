@@ -206,6 +206,12 @@ if ($login == 1) {
                 <svg class="bi"><use xlink:href="#cart"/></svg>
                 Daftar Buku
               </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="ulasan.php">
+                <svg class="bi"><use xlink:href="#list"/></svg>
+                Ulasan
+              </a>
             </li> 
             <?php
               if($_SESSION ['level'] != 'pengguna'){
@@ -261,7 +267,7 @@ if ($login == 1) {
       </div>
       <h2>Data Peminjaman</h2>
       <?php
-      if(isset($_SESSION['level'])){ ?>
+      if(isset($_SESSION['userID'])){ ?>
      <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>
@@ -283,7 +289,7 @@ if ($login == 1) {
           <tbody>
           <?php
               include "koneksi.php";
-              $query = mysqli_query ($koneksi, "SELECT * FROM peminjaman LEFT JOIN user ON peminjaman.userID = user.userID LEFT JOIN buku ON peminjaman.bukuID = buku.bukuID");
+              $query = mysqli_query ($koneksi, "SELECT * FROM peminjaman LEFT JOIN user ON user.userID = peminjaman.userID LEFT JOIN buku ON buku.bukuID = peminjaman.bukuID");
               $no=0;
               while($data = mysqli_fetch_array($query)){
               $no++

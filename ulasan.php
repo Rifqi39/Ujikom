@@ -1,8 +1,8 @@
 <?php
+include "koneksi.php";
 session_start();
 $login =isset( $_SESSION ['login']);
 if ($login == 1) {
-       include "koneksi.php";
 
 
        $cookie_name = "user";
@@ -12,53 +12,109 @@ if ($login == 1) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tambah data</title>
-    <style>
-        body {
-            font-family: verdana;
-            font-size: 12px;
+    <title>Aplikasi Perpustakaan Digital</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+        a{
+    text-decoration: none;
+    color: black;
+      }
+      body, table{
+        background-color: lgray;
+      }   
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
         }
 
-        a {
-            text-decoration: none;
-            color: blue;
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
         }
 
-        a:hover {
-            color: green;
+        .b-example-divider {
+          width: 100%;
+          height: 3rem;
+          background-color: rgba(0, 0, 0, .1);
+          border: solid rgba(0, 0, 0, .15);
+          border-width: 1px 0;
+          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
         }
 
-        .container{
-            box-shadow: 2px 2px 2px;
-            width: 25%;
-            margin: 15% 37%;
-            border: 1px solid black;
-            border-radius: 10px;
+        .b-example-vr {
+          flex-shrink: 0;
+          width: 1.5rem;
+          height: 100vh;
         }
-        table{
-            border-collapse: collapse;
-            text-align: center;
-            margin:7px;
 
+        .bi {
+          vertical-align: -.125em;
+          fill: currentColor;
         }
-        input[type=submit]{
 
-            cursor: pointer;
-            margin: 4px 0;
-            padding: 7px 6px;
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
         }
-        input{
-            border-radius:10px;
-            background-color: transparent;
-        }
-        input[type=reset]{
 
-            cursor: pointer;
-            margin: 4px 0;
-            padding: 7px 6px;
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
         }
-    </style>
-   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+        .btn-bd-primary {
+          --bd-violet-bg: #712cf9;
+          --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+          --bs-btn-font-weight: 600;
+          --bs-btn-color: var(--bs-white);
+          --bs-btn-bg: var(--bd-violet-bg);
+          --bs-btn-border-color: var(--bd-violet-bg);
+          --bs-btn-hover-color: var(--bs-white);
+          --bs-btn-hover-bg: #6528e0;
+          --bs-btn-hover-border-color: #6528e0;
+          --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+          --bs-btn-active-color: var(--bs-btn-hover-color);
+          --bs-btn-active-bg: #5a23c8;
+          --bs-btn-active-border-color: #5a23c8;
+        }
+
+        .bd-mode-toggle {
+          z-index: 1500;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+          display: block !important;
+        }
+  </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/dashboard.css" rel="stylesheet">
+</head>
+<body align="center">
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="calendar3" viewBox="0 0 16 16">
     <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
     <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
@@ -107,13 +163,6 @@ if ($login == 1) {
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
   </symbol>
 </svg>
-</head>
-<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/dashboard.css">
-
-<body>
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="index.php">Perpustakaan Digital</a>
 
@@ -135,7 +184,7 @@ if ($login == 1) {
   </div>
 </header>
 <div class="container-fluid">
-    <div class="row">
+  <div class="row">
     <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
       <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
@@ -165,13 +214,20 @@ if ($login == 1) {
             <?php
               if($_SESSION ['level'] != 'pengguna'){
             ?>
-            <li class="nav-item">
+          </ul>
+          <?php
+              if($_SESSION ['level'] == 'admin'){
+            ?>
+          <ul class="nav flex-column mb-auto">
+          <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="d_kategori.php">
-                <svg class="bi"><use xlink:href="#file-earmark"/></svg>
+                <svg class="bi"><use xlink:href="#plus-circle"/></svg>
                 Kategori
               </a>
             </li>
-          </ul>
+            <?php
+              }
+            ?>
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="d_user.php">
@@ -196,85 +252,58 @@ if ($login == 1) {
       </div>
     </div>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Tambah Buku</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-         
+    <h1>Ulasan Buku</h1>
+    <form>
+        <div class="card">
+            <div class="card-body">
+            <a href="aksi_ulasan.php" class = "btn btn-primary">Tambah Ulasan</a>
+            <div class="row md-12"> 
+                <table class = "table table-striped table-sm" id = "dataTable" width= "100%" cellspacing = "0">
+                    <tr>
+                        <th>No</th>
+                        <th>Username</th>
+                        <th>Buku</th>
+                        <th>Ulasan</th>
+                        <th>Rating</th>
+                        <?php
+              if($_SESSION ['level'] != 'pengguna'){
+            ?>
+                        <th>Aksi</th>
+                        <?php } ?>
+                    </tr>
+                    <?php
+                        $i = 1;
+                        $query = mysqli_query ($koneksi, "SELECT * FROM ulasanbuku LEFT JOIN user ON ulasanbuku.userID = user.userID LEFT JOIN buku ON ulasanbuku.bukuID = buku.bukuID");
+                        while($data = mysqli_fetch_array($query))
+                    ?>
+                    <tr>
+                        <td><?php echo $i++; ?></td>
+                        <td><?php echo $data['username']; ?></td>
+                        <td><?php echo $data['judul']; ?></td>
+                        <td><?php echo $data['ulasan']; ?></td>
+                        <td><?php echo $data['rating']; ?></td>
+                        <?php
+              if($_SESSION ['level'] != 'pengguna'){
+            ?>
+                        <td>
+
+                            <a href="?page=ulasan_hapus&&id=<?php echo $data['ulasanID']; ?>" onClick =  "return confirm ('Yakin Ingin Hapus Ulasan?')" class="btn btn-danger">Hapus</a></td>
+                        </td>  
+                        <?php
+              }
+                        ?>
+                    </tr>
+
+                </table>
+            </div>
+            </div>
         </div>
-      </div>
-        <table class = "table table-striped table-sm">
-            <form action="aksi_tambah.php" method="post">
-            <tr>
-                <td width="150">Foto</td>
-                <td>
-                    <input type="file" name="foto" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Kategori</td>
-                <td>
-                    <select name="kategoriID" class="form-control">
-                        <?php
-                            $ki = mysqli_query($koneksi, "SELECT * FROM kategoribuku");
-                            while($kategori = mysqli_fetch_array($ki)){
-                        ?>
-                        <option value="<?php echo $kategori['kategoriID']; ?>"><?php echo $kategori['namakategori'] ?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Judul</td>
-                <td>
-                    <input type="text" name="judul" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Penulis</td>
-                <td>
-                    <input type="text" name="penulis" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Penerbit</td>
-                <td>
-                    <input type="text" name="penerbit" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Tahun Terbit</td>
-                <td>
-                    <input type="text" name="tahunterbit" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Sinopsis</td>
-                <td>
-                <input type="text" name="sinopsis" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Stok</td>
-                <td>
-                    <input type="text" width="200" name="stok" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td colspan = "2">
-                    <input type="submit" name ="submit" value="Tambah" required><input type="reset" value="Reset">
-                </td>
-            </tr>
-            </form>
-        </table>
+    </form>
     </main>
     </div>
-</div>
+    </div>
 </body>
 </html>
 <?php
-} else {      
-       include "login.php";
 }
 ?>

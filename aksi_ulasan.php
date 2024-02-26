@@ -58,7 +58,7 @@ if ($login == 1) {
             padding: 7px 6px;
         }
     </style>
-   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="calendar3" viewBox="0 0 16 16">
     <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
     <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
@@ -136,7 +136,7 @@ if ($login == 1) {
 </header>
 <div class="container-fluid">
     <div class="row">
-    <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+<div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
       <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="sidebarMenuLabel">Perpustakaan Digital</h5>
@@ -161,7 +161,7 @@ if ($login == 1) {
                 <svg class="bi"><use xlink:href="#list"/></svg>
                 Ulasan
               </a>
-            </li>
+            </li> 
             <?php
               if($_SESSION ['level'] != 'pengguna'){
             ?>
@@ -194,31 +194,41 @@ if ($login == 1) {
       <div class="sb-sidenav-footer">
           <div class="small">Login sebagai <?php echo $_SESSION['username']?></div>
       </div>
-    </div>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+</div>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Tambah Buku</h1>
+        <h1 class="h2">Tambah Ulasan</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
          
         </div>
       </div>
         <table class = "table table-striped table-sm">
-            <form action="aksi_tambah.php" method="post">
+            <form method="post">
+        <?php
+            if(isset($_POST['submit'])){
+        $iduser = $_POST['userID'];
+        $idbuku = $_POST['bukuID'];
+        $ulasan = $_POST['ulasan'];
+        $rating = $_POST['rating'];
+
+        $query = mysqli_query($koneksi, "INSERT INTO ulasanbuku (userID, bukuID, ulasan, rating) VALUES ('$iduser','$idbuku','$ulasan','$rating')");
+
+            if($query){
+                echo '<script>alert("Berhasil Tambah Ulasan"); 
+                location.href = "index.php?page=ulasan";
+                </script>';
+                }
+            }
+        ?>
             <tr>
-                <td width="150">Foto</td>
+                <td width="150">Buku</td>
                 <td>
-                    <input type="file" name="foto" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Kategori</td>
-                <td>
-                    <select name="kategoriID" class="form-control">
+                    <select name="bukuID" class="form-control">
                         <?php
-                            $ki = mysqli_query($koneksi, "SELECT * FROM kategoribuku");
-                            while($kategori = mysqli_fetch_array($ki)){
+                            $ki = mysqli_query($koneksi, "SELECT * FROM buku");
+                            while($buku = mysqli_fetch_array($ki)){
                         ?>
-                        <option value="<?php echo $kategori['kategoriID']; ?>"><?php echo $kategori['namakategori'] ?></option>
+                        <option value="<?php echo $buku['bukuID']; ?>"><?php echo $buku['judul'] ?></option>
                         <?php
                             }
                         ?>
@@ -226,42 +236,28 @@ if ($login == 1) {
                 </td>
             </tr>
             <tr>
-                <td width="150">Judul</td>
+                <td width="150">Ulasan</td>
                 <td>
-                    <input type="text" name="judul" required autofocus>
+                <textarea name="ulasan" cols="180" rows="5"></textarea>
                 </td>
             </tr>
             <tr>
-                <td width="150">Penulis</td>
+                <td width="150">Rating</td>
                 <td>
-                    <input type="text" name="penulis" required autofocus>
+                <select name="rating" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
                 </td>
             </tr>
-            <tr>
-                <td width="150">Penerbit</td>
-                <td>
-                    <input type="text" name="penerbit" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Tahun Terbit</td>
-                <td>
-                    <input type="text" name="tahunterbit" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Sinopsis</td>
-                <td>
-                <input type="text" name="sinopsis" required autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td width="150">Stok</td>
-                <td>
-                    <input type="text" width="200" name="stok" required autofocus>
-                </td>
-            </tr>
-            <tr>
                 <td colspan = "2">
                     <input type="submit" name ="submit" value="Tambah" required><input type="reset" value="Reset">
                 </td>

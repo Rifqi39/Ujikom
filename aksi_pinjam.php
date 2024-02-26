@@ -14,7 +14,7 @@
 
         if($query){
             echo '<script>alert("Berhasil Pinjam"); 
-                window.location="index.php";
+            location.href = "index.php?page=peminjaman";
             </script>';
         }
     }
