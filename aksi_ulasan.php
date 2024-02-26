@@ -238,7 +238,7 @@ if ($login == 1) {
             <tr>
                 <td width="150">Ulasan</td>
                 <td>
-                <textarea name="ulasan" cols="180" rows="5"></textarea>
+                <textarea name="ulasan" cols="160" rows="5"></textarea>
                 </td>
             </tr>
             <tr>
