@@ -274,7 +274,7 @@ if ($login == 1) {
                     <?php
                         $i = 1;
                         $query = mysqli_query ($koneksi, "SELECT * FROM ulasanbuku LEFT JOIN user ON ulasanbuku.userID = user.userID LEFT JOIN buku ON ulasanbuku.bukuID = buku.bukuID");
-                        while($data = mysqli_fetch_array($query))
+                        while($data = mysqli_fetch_array($query)){
                     ?>
                     <tr>
                         <td><?php echo $i++; ?></td>
@@ -293,7 +293,9 @@ if ($login == 1) {
               }
                         ?>
                     </tr>
-
+                    <?php
+              }
+                        ?>
                 </table>
             </div>
             </div>
