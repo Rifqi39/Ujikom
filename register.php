@@ -21,7 +21,7 @@
         .container{
             background-color: transparent;
             width: 25%;
-            margin: 15% 37%;
+            margin: 5% 37%;
             border: 1px solid black;
             border-radius: 10px;
         }
@@ -47,6 +47,8 @@
 <body>
     <h1 align="center">Register Account</h1>
     <hr>
+    <h2 align="center"><img src="assets/img/PRLogo.png" width = "200px" height = "200px" alt="Logo"></h2>
+    
     
         <div class="container">
         <table width="300" border="0" align="center">
@@ -66,7 +68,7 @@
             <tr>
                 <td width="150">Email</td>
                     <td>
-                    <input email="password" name="email" required autofocus>
+                    <input type="email" name="email" required autofocus>
                 </td>
             </tr>
             <tr>

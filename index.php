@@ -21,7 +21,7 @@ if ($login == 1) {
     <title>Aplikasi Perpustakaan Digital</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-
+  
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -166,32 +166,19 @@ if ($login == 1) {
 
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Perpustakaan Digital</a>
-
-  <ul class="navbar-nav flex-row d-md-none">
-    <li class="nav-item text-nowrap">
-      <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-        <svg class="bi"><use xlink:href="#search"/></svg>
-      </button>
-    </li>
-    <li class="nav-item text-nowrap">
-      <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="bi"><use xlink:href="#list"/></svg>
-      </button>
-    </li>
-  </ul>
-
-  <div id="navbarSearch" class="navbar-search w-100 collapse">
-    <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-  </div>
+  <img src="assets/img/PRLogo.png" alt="Logo" height= "50px" width = "50px">
 </header>
 
 <div class="container-fluid">
   <div class="row">
     <div class="sidebar border border-right col-md-3 col-lg-2 p-0  bg-body-tertiary">
-      <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+      <div class="canvas  " tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="sidebarMenuLabel">Perpustakaan Digital</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+        <div>
+              <a class="btn btn-outline-primary">
+               Nama: Rifqi Surya Putra
+              </a>
+        </div>
         </div>
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
@@ -246,7 +233,7 @@ if ($login == 1) {
                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
                 Sign out
               </a>
-            </li>
+            </li>            
           </ul>
         </div>
       </div>
@@ -327,7 +314,8 @@ if ($login == 1) {
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" 
     integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" 
-    crossorigin="anonymous"></script><script src="assets/js/dashboard.js"></script></body>
+    crossorigin="anonymous"></script><script src="assets/js/dashboard.js"></script>
+  </body>
 </html>
 <?php
 } else {      

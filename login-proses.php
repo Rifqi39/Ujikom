@@ -3,7 +3,7 @@
     include "koneksi.php";
 
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     //cek data
     $sql = "SELECT * FROM user WHERE username = '$username'";
